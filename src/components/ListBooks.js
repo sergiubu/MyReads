@@ -21,7 +21,7 @@ export default class ListBooks extends Component {
       ]
 
     const { books, onChangeShelf } = this.props;
-
+    
     return (
       <div className="list-books">
         <div className="list-books-title">

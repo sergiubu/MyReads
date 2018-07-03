@@ -11,7 +11,8 @@ export default class Bookshelf extends Component {
         <h2 className="bookshelf-title">{shelf.shelfTitle}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {books.map(book => (
+            {books.filter(book => book.shelf === shelf.shelfName)
+                  .map(book => (
               <li key={book.id}>
                 <Book
                   book={book}

@@ -17,7 +17,10 @@ export default class SearchBooks extends Component {
     } else {
       this.setState({ query: query.trim() })
       BooksAPI.search(query).then(books => {
-        books.map(book => (this.props.searchBooks.filter(b => b.id !== book.id).map(b => book.shelf = b.shelf)))
+        if (books.error) {
+          books = []
+        }
+        books.map(book => (this.props.searchBooks.filter(b => b.id === book.id).map(b => book.shelf = b.shelf)))
         this.setState({ books })
       })
     }
@@ -26,7 +29,7 @@ export default class SearchBooks extends Component {
   render() {
     
     const { onChangeShelf } = this.props;
-
+    
     return (
         <div className="search-books">
           <div className="search-books-bar">
